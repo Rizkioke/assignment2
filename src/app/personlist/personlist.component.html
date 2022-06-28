@@ -1,0 +1,19 @@
+<ul>
+<li *ngFor="let person of person" [class.edited]="person.edited" [class.deleted]="person.deleted">
+        <div class="section">
+            {{person.name}} <span class="rating" *ngFor="let i of arr(person.rating)">*</span>
+            
+            <div [ngClass]="{'deleted': person.deleted == true, 'updated': person.edited == true}">
+                <div *ngIf="person.edited == true">Edited</div>
+                <div *ngIf="person.deleted == true">Deleted</div>
+
+
+            </div>
+            
+            <div class="footer">
+                <button *ngIf="person.canDelete" (click)="deletePerson(person)">Deletee</button>
+                <button *ngIf="person.canEdit" (click)="editPerson(person)">Editt</button>
+            </div>
+        </div>
+    </li>
+</ul>
